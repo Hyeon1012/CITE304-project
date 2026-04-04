@@ -1,12 +1,19 @@
-# CITE304
-
-## Requirement
+# CITE304-project
 
 ## :pushpin: Description
 
+Re: 제로부터 시작하는 포스텍 생활
+by G-POS 카르텔 (지금바로가입)
+
 ## :sparkles: Skills & Tech Stack
 
+1. 프로젝트 관리 : Notion, GitHub
+2. 커뮤니케이션 : Notion, Discord
+3. 개발환경 : Unity 6000.3.11f1
+
 ## :card_file_box: Packages
+
+TBD
 
 ## :hammer_and_wrench: Git
 
