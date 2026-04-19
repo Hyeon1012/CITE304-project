@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public InputManager inputManager;
 
     // on Level Scenes
-    //public GameObject pauseMenu;
+    public GameObject pauseMenu;
     public GameObject player;
 
     public bool IsPaused { get; private set; }
@@ -56,14 +56,14 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        //pauseMenu.SetActive(true);
+        pauseMenu.SetActive(true);
         IsPaused = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        //pauseMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         IsPaused = false;
     }
 
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
             IsInputBlocked = false;
 
             player = GameObject.Find("Player");
-            //pauseMenu = GameObject.Find("LevelCanvas").transform.Find("PauseMenu").gameObject;
+            pauseMenu = GameObject.Find("LevelCanvas").transform.Find("PauseMenu").gameObject;
 
             player.GetComponent<PlayerMovement>().Init();
         }
