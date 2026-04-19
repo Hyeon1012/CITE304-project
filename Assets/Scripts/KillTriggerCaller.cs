@@ -11,6 +11,7 @@ public class Hazard : MonoBehaviour
         if (player != null)
         {
             player.KillPlayer();
+            GameManager.Instance.PlayerDie();
         }
     }
 }

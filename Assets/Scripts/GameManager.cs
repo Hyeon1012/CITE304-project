@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,12 +8,15 @@ public class GameManager : MonoBehaviour
 {
     public const int EXIST_MAP_N = 1;
     public const int LEVEL_SCENE_OFFSET = 1;
+
+    public List<int> grades = new List<int>{ 1, 1 };
     public static GameManager Instance { get; private set; }
     public SceneChanger sceneChanger;
     public InputManager inputManager;
 
     // on Level Scenes
     public GameObject pauseMenu;
+    public GameObject deathPopUp;
     public GameObject player;
 
     public bool IsPaused { get; private set; }
@@ -45,6 +49,15 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         inputManager.GetInput();
+    }
+
+    public void PlayerDie()
+    {
+        Debug.Log(sceneChanger.curScene - LEVEL_SCENE_OFFSET);
+
+        Debug.Log(grades.Count);
+        grades[sceneChanger.curScene - LEVEL_SCENE_OFFSET]++;
+        deathPopUp.SetActive(true);
     }
 
     public void OnPauseKeyInput()
@@ -86,6 +99,7 @@ public class GameManager : MonoBehaviour
 
             player = GameObject.Find("Player");
             pauseMenu = GameObject.Find("LevelCanvas").transform.Find("PauseMenu").gameObject;
+            deathPopUp = GameObject.Find("LevelCanvas").transform.Find("DeathPopUp").gameObject;
 
             player.GetComponent<PlayerMovement>().Init();
         }
