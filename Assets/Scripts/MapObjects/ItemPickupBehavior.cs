@@ -9,13 +9,41 @@ public class ItemPickup : MonoBehaviour
     [SerializeField] private Sprite jumpBoostSprite;
     [SerializeField] private Sprite effectlessSprite;
 
+    [Header("Movement")]
+    [SerializeField] private float moveUpDistance = 1f;
+    [SerializeField] private float moveUpSpeed = 3f;
 
     private SpriteRenderer _sr;
+
+    private Vector3 startPos;
+    private Vector3 targetPos;
+    private bool movingUp = false;
 
     private void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();
+        startPos = transform.position;
+        targetPos = startPos + Vector3.up * moveUpDistance;
+
         UpdateSprite();
+    }
+
+    private void Update()
+    {
+        if (!movingUp) return;
+
+        transform.position = Vector3.MoveTowards(
+            transform.position,
+            targetPos,
+            moveUpSpeed * Time.deltaTime
+        );
+    }
+
+    public void MoveUp()
+    {
+        if (movingUp) return;
+
+        movingUp = true;
     }
 
     private void UpdateSprite()
