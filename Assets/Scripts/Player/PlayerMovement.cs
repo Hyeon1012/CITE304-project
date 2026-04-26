@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float direction { get; private set; }
 
     private PlayerStateManager _stateManager;
+    private PlayerNoiseMaker _noiseMaker;
     private float _currentSpeed;
 
     void Awake()
@@ -30,7 +31,9 @@ public class PlayerMovement : MonoBehaviour
         _sr = gameObject.GetComponent<SpriteRenderer>();
         _playerCollider = gameObject.GetComponent<Collider2D>();
         _groundChecker = gameObject.GetComponent<GroundChecker>();
-        _stateManager = gameObject.GetComponent<PlayerStateManager>(); 
+        _stateManager = gameObject.GetComponent<PlayerStateManager>();
+        
+        _noiseMaker = gameObject.GetComponent<PlayerNoiseMaker>();
 
         direction = 1;
         _currentSpeed = _speed;
@@ -55,6 +58,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_groundChecker.isGrounded)
         {
+            if (_noiseMaker != null)
+            {
+                _noiseMaker.MakeJumpNoise();
+            }
+
             OnPlayerJumped?.Invoke();
 
             float jumpMultiplier = _stateManager != null ? _stateManager.GetJumpMultiplier() : 1f;
@@ -98,6 +106,14 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _currentSpeed = _speed;
+        }
+
+        if (_moveInput != 0)
+        {
+            if (_noiseMaker != null)
+            {
+                _noiseMaker.MakeWalkNoise();
+            }
         }
     }
 
