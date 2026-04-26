@@ -78,6 +78,7 @@ public class Hazard : MonoBehaviour
         if (player != null)
         {
             player.KillPlayer();
+
         }
     }
 }

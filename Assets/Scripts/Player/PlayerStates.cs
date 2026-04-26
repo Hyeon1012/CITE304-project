@@ -30,10 +30,12 @@ public class PlayerStateManager : MonoBehaviour
 
     // --- ITEM EFFECT QUERIES ---
 
-    public bool HasAccelerator()
+    public bool HasItem(ItemType queryItem = ItemType.None)
     {
-        return currentItem == ItemType.Accelerator;
+        return currentItem == queryItem;
     }
+
+
 
     public float GetJumpMultiplier()
     {

@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         if (_moveInput == 0) OnPlayerStopWalking?.Invoke();
 
         // --- ACCELERATOR LOGIC ---
-        if (_stateManager != null && _stateManager.HasAccelerator())
+        if (_stateManager != null && _stateManager.HasItem(ItemType.Accelerator))
         {
             if (_moveInput != 0)
             {

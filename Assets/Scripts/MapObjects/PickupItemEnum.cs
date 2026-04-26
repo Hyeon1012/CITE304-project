@@ -2,7 +2,8 @@ public enum ItemType
 {
     None,
     JumpBoost,
-    Accelerator
+    Accelerator,
+    WaterBucket
 }
 
 //double jump? dash? what other items we addin?

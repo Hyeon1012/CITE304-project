@@ -11,6 +11,8 @@ public class SceneChanger : MonoBehaviour {
         SceneManager.LoadScene(curScene);
     }
 
+
+
     public void GoToNextStage()
     {   
         SceneManager.LoadScene(++curScene);
@@ -37,4 +39,11 @@ public class SceneChanger : MonoBehaviour {
 
         GameManager.Instance.inputManager.ResetKey += Reset;
     }
+
+
+    public void LoadStage(string sceneName)//debug tool
+    { 
+        SceneManager.LoadScene(sceneName);
+    }
+
 }
