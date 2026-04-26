@@ -365,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 26797676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.7, y: 0.62, z: 0}
   m_LocalScale: {x: 0.7, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -383,8 +383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327e743bdb862334f8b7f40ff101ebae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNoiseMaker
-  JumpNoise: 10
-  WalkNoise: 10
+  JumpNoise: 50
+  WalkNoise: 30
+  fallNoiseWeight: 5
 --- !u!1 &120294540
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +709,7 @@ MonoBehaviour:
   maxNoise: 100
   thresholdNoise: 80
   _currentNoise: 0
+  _noiseDecayRate: 10
   OnNoiseThresholdReached:
     m_PersistentCalls:
       m_Calls: []

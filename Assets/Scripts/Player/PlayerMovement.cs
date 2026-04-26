@@ -13,7 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer _sr;
     private Collider2D _playerCollider;
     private GroundChecker _groundChecker;
-    private float _moveInput = 0;
+    private float _moveInput = 0f;
+
+    private float _fallDistance = 0f;
 
     public event Action OnPlayerJumped;
     public event Action OnPlayerWalking;
@@ -125,8 +127,20 @@ public class PlayerMovement : MonoBehaviour
         if (_moveInput < 0) _sr.flipX = true;
         else if (_moveInput > 0) _sr.flipX = false;
 
-        if (_rb.linearVelocityY < 0) _rb.gravityScale = _fallGravityScale;
-        else _rb.gravityScale = _gravityScale;
+        if (_rb.linearVelocityY < 0)
+        {
+            _fallDistance -= _rb.linearVelocityY * 0.02f;
+            _rb.gravityScale = _fallGravityScale;
+        }
+        else
+        {
+            if (_noiseMaker != null && _fallDistance >= 0.1f)
+            {
+                _noiseMaker.MakeLandingNoise(_fallDistance);
+            }
+            _fallDistance = 0;
+            _rb.gravityScale = _gravityScale;
+        }
     }
 
     void OnDestroy()
