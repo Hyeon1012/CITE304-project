@@ -9,14 +9,13 @@ public class GameManager : MonoBehaviour
     public const int EXIST_MAP_N = 1;
     public const int LEVEL_SCENE_OFFSET = 1;
 
-    public List<int> grades = new List<int>{ 1, 1 };
+    public List<int> grades = new List<int>{ 1, 1, 1 };
     public static GameManager Instance { get; private set; }
     public SceneChanger sceneChanger;
     public InputManager inputManager;
 
     // on Level Scenes
-    public GameObject pauseMenu;
-    public GameObject deathPopUp;
+    public LevelCanvas levelCanvas;
     public GameObject player;
 
     public bool IsPaused { get; private set; }
@@ -57,7 +56,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(grades.Count);
         grades[sceneChanger.curScene - LEVEL_SCENE_OFFSET]++;
-        deathPopUp.SetActive(true);
+        levelCanvas.deathPopUp.SetActive(true);
     }
 
     public void OnPauseKeyInput()
@@ -69,14 +68,14 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        levelCanvas.pauseMenu.SetActive(true);
         IsPaused = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        pauseMenu.SetActive(false);
+        levelCanvas.pauseMenu.SetActive(false);
         IsPaused = false;
     }
 
@@ -98,8 +97,7 @@ public class GameManager : MonoBehaviour
             IsInputBlocked = false;
 
             player = GameObject.Find("Player");
-            pauseMenu = GameObject.Find("LevelCanvas").transform.Find("PauseMenu").gameObject;
-            deathPopUp = GameObject.Find("LevelCanvas").transform.Find("DeathPopUp").gameObject;
+            levelCanvas = GameObject.Find("LevelCanvas").gameObject.GetComponent<LevelCanvas>();
 
             player.GetComponent<PlayerMovement>().Init();
         }
