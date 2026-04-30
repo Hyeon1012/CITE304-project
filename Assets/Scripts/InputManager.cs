@@ -24,6 +24,8 @@ public class InputManager : MonoBehaviour
     // Click event
     public Vector2 mouse_p;
 
+    public bool ShiftKey;
+
     // Tracks mouse position in unity world coordinates (not in screen pixels)
     private float lastinput_h = 0;
 
@@ -66,5 +68,7 @@ public class InputManager : MonoBehaviour
         {
             ResetKey?.Invoke();
         }
+
+        ShiftKey = Input.GetKey(KeyCode.LeftShift);
     }
 }

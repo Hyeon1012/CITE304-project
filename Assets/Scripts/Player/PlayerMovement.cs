@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpPower;
     [SerializeField] private float _gravityScale = 2.0f;
     [SerializeField] private float _fallGravityScale = 2.5f;
+    [SerializeField] private float _shiftRate = 0.3f;
+    [SerializeField] private bool _shiftTurnOn = true;
 
     private Rigidbody2D _rb;
     private SpriteRenderer _sr;
@@ -62,13 +64,14 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_noiseMaker != null)
             {
-                _noiseMaker.MakeJumpNoise();
+                _noiseMaker.MakeJumpNoise(_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey, _shiftRate);
             }
 
             OnPlayerJumped?.Invoke();
 
             float jumpMultiplier = _stateManager != null ? _stateManager.GetJumpMultiplier() : 1f;
-            _rb.AddForce(Vector2.up * _jumpPower * jumpMultiplier, ForceMode2D.Impulse);
+            float shiftMultiplier = (_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey) ? shiftMultiplier = _shiftRate : 1f;
+            _rb.AddForce(Vector2.up * _jumpPower * jumpMultiplier * shiftMultiplier, ForceMode2D.Impulse);
         }
     }
 
@@ -92,6 +95,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_moveInput == 0) OnPlayerStopWalking?.Invoke();
 
+        float shiftMultiplier = (_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey) ? shiftMultiplier = _shiftRate : 1f;
+
         // --- ACCELERATOR LOGIC ---
         if (_stateManager != null && _stateManager.HasItem(ItemType.Accelerator))
         {
@@ -107,14 +112,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _currentSpeed = _speed;
+            _currentSpeed = _speed * shiftMultiplier;
         }
 
         if (_moveInput != 0)
         {
             if (_noiseMaker != null)
             {
-                _noiseMaker.MakeWalkNoise();
+                _noiseMaker.MakeWalkNoise(_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey, _shiftRate);
             }
         }
     }
