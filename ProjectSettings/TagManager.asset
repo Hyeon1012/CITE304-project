@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Platform
+  - Book
   layers:
   - Default
   - TransparentFX

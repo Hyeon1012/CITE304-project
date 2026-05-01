@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
             OnPlayerJumped?.Invoke();
 
             float jumpMultiplier = _stateManager != null ? _stateManager.GetJumpMultiplier() : 1f;
-            float shiftMultiplier = (_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey) ? shiftMultiplier = _shiftRate : 1f;
+            float shiftMultiplier = (_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey) ? shiftMultiplier = Mathf.Sqrt(_shiftRate) : 1f;
             _rb.AddForce(Vector2.up * _jumpPower * jumpMultiplier * shiftMultiplier, ForceMode2D.Impulse);
         }
     }
