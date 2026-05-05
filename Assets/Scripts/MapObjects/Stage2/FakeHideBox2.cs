@@ -9,7 +9,7 @@ public class FakeHideBox2 : MonoBehaviour
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.S))
         {
-            Book.SetActive(true);
+            if (Book != null) Book.SetActive(true);
         }
     }
 
