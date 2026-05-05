@@ -5,35 +5,46 @@ public class Chaser : MonoBehaviour
 {
     public Transform target;
     public float moveSpeed = 4f;
-    private Rigidbody2D rb;
 
-    void Start()
+    [SerializeField] private float _delay = 2.0f;
+
+    private Rigidbody2D rb;
+    private float dirX;
+    private bool start = false;
+    private float timer;
+
+    public void Init()
     {
         rb = GetComponent<Rigidbody2D>();
+        dirX = Mathf.Sign(target.position.x - transform.position.x);
+        timer = _delay;
+        start = true;
     }
 
     void Update()
     {
-        if (target == null) return;
-
-        float dirX = Mathf.Sign(target.position.x - transform.position.x);
-        float distX = Mathf.Abs(target.position.x - transform.position.x);
-
-        if (distX > 0.2f)
+        if (start)
         {
-            rb.linearVelocity = new Vector2(dirX * moveSpeed, rb.linearVelocity.y);
-        }
-        else
-        {
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            if (timer <= 0)
+            {
+                rb.linearVelocityX = dirX * moveSpeed;
+                if (start && (target == null || transform.position.x - target.position.x > 100f))
+                {
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<PlayerStateManager>().KillPlayer();
         }
     }
 }

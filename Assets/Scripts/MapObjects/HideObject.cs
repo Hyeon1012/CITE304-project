@@ -8,7 +8,7 @@ public class HideObject : MonoBehaviour
 
     void Update()
     {
-        if ((isPlayerInRange || isHiding) && Input.GetKeyDown(KeyCode.Q))
+        if ((isPlayerInRange || isHiding) && Input.GetKeyDown(KeyCode.S))
         {
             if (isHiding)
             {
