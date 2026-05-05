@@ -11,7 +11,7 @@ public class MakeChaser : MonoBehaviour
 
     public void makeChaser()
     {
-        targetPosition = new Vector3(target.position.x, 0, 0) + offset;
+        targetPosition = new Vector3(target.position.x, -0.5f, 0) + offset;
         GameObject chaser = Instantiate(chaserPrefab, transform);
         chaser.transform.position = targetPosition;
         chaser.GetComponent<Chaser>().target = player;

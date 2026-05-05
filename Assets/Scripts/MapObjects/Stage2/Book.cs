@@ -9,7 +9,7 @@ public class Book : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             _bookCount.bookObtained();
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
