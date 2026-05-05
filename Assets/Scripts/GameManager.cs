@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,12 +8,14 @@ public class GameManager : MonoBehaviour
 {
     public const int EXIST_MAP_N = 1;
     public const int LEVEL_SCENE_OFFSET = 1;
+
+    public List<int> grades = new List<int>{ 1, 1, 1 };
     public static GameManager Instance { get; private set; }
     public SceneChanger sceneChanger;
     public InputManager inputManager;
 
     // on Level Scenes
-    public GameObject pauseMenu;
+    public LevelCanvas levelCanvas;
     public GameObject player;
 
     public bool IsPaused { get; private set; }
@@ -47,6 +50,15 @@ public class GameManager : MonoBehaviour
         inputManager.GetInput();
     }
 
+    public void PlayerDie()
+    {
+        Debug.Log(sceneChanger.curScene - LEVEL_SCENE_OFFSET);
+
+        Debug.Log(grades.Count);
+        grades[sceneChanger.curScene - LEVEL_SCENE_OFFSET]++;
+        levelCanvas.deathPopUp.SetActive(true);
+    }
+
     public void OnPauseKeyInput()
     {
         if (IsPaused) ResumeGame();
@@ -56,14 +68,14 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        levelCanvas.pauseMenu.SetActive(true);
         IsPaused = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        pauseMenu.SetActive(false);
+        levelCanvas.pauseMenu.SetActive(false);
         IsPaused = false;
     }
 
@@ -85,7 +97,7 @@ public class GameManager : MonoBehaviour
             IsInputBlocked = false;
 
             player = GameObject.Find("Player");
-            pauseMenu = GameObject.Find("LevelCanvas").transform.Find("PauseMenu").gameObject;
+            levelCanvas = GameObject.Find("LevelCanvas").gameObject.GetComponent<LevelCanvas>();
 
             player.GetComponent<PlayerMovement>().Init();
         }

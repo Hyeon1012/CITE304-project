@@ -6,13 +6,13 @@ public class PlayerNoiseMaker : MonoBehaviour
     public float WalkNoise = 6f;
     public float fallNoiseWeight = 5f;
 
-    public void MakeJumpNoise()
+    public void MakeJumpNoise(bool shiftKey, float shiftRate)
     {
-        if (NoiseManager.Instance != null) NoiseManager.Instance.AddNoise(JumpNoise);
+        if (NoiseManager.Instance != null) NoiseManager.Instance.AddNoise(shiftKey ? JumpNoise * shiftRate : JumpNoise);
     }
-    public void MakeWalkNoise()
+    public void MakeWalkNoise(bool shiftKey, float shiftRate)
     {
-        if (NoiseManager.Instance != null) NoiseManager.Instance.AddNoise(WalkNoise * Time.deltaTime);
+        if (NoiseManager.Instance != null) NoiseManager.Instance.AddNoise(shiftKey ? WalkNoise * shiftRate * Time.deltaTime : WalkNoise * Time.deltaTime);
     }
     public void MakeLandingNoise(float fallDistance)
     {

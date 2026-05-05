@@ -13,6 +13,7 @@ public class PlayerStateManager : MonoBehaviour
 
         currentState = PlayerState.Dead;
         Debug.Log("Player has died!");
+        GameManager.Instance.PlayerDie();
 
         Destroy(gameObject);
     }
