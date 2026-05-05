@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
         if (scene.name == "LevelSelect")
         {
-            IsInputBlocked = true;
+            IsInputBlocked = false;
         }
         else if (scene.name == "Title")
         {
