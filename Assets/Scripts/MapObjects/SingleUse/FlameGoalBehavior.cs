@@ -17,7 +17,8 @@ public class FlameGoalBehavior : MonoBehaviour
 
         else
         {
-            //placeholder for a scene switching function
+            GameManager.Instance.sceneChanger.GoToLevelSelect();
+            Debug.Log("Level Select called");
         }
     }
 }
