@@ -3,14 +3,17 @@ using UnityEngine;
 
 public class BookCount : MonoBehaviour
 {
-    public int bookCount = 0;
+    public int bookCount { get; private set; }
     public const int bookMax = 3;
 
-    private TextMeshProUGUI _text;
+    [SerializeField] private GameObject _door;
 
+    private TextMeshPro _text;
+    
     void Start()
     {
-        _text = GetComponent<TextMeshProUGUI>();
+        bookCount = 0;
+        _text = GetComponent<TextMeshPro>();
         updateText();
     }
 
@@ -23,5 +26,11 @@ public class BookCount : MonoBehaviour
     public void updateText()
     {
         _text.text = bookCount + " / " + bookMax;
+
+        if (bookCount == bookMax)
+        {
+            _door.SetActive(false);
+            gameObject.SetActive(false);
+        }
     }
 }

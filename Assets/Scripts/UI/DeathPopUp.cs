@@ -19,6 +19,7 @@ public class DeathPopUp : MonoBehaviour
 
     public void Retry()
     {
+        Debug.Log("Retry");
         GameManager.Instance.sceneChanger.Reset();
     }
 }

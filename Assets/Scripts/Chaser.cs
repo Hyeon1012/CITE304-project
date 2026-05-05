@@ -33,7 +33,7 @@ public class Chaser : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<PlayerStateManager>().KillPlayer();
         }
     }
 }
