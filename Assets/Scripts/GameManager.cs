@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public const int EXIST_MAP_N = 1;
-    public const int LEVEL_SCENE_OFFSET = 1;
+    public const int EXIST_MAP_N = 2;
+    public const int LEVEL_SCENE_OFFSET = 2;
+    public int levelReached = 1;
 
-    public List<int> grades = new List<int>{ 1, 1, 1 };
+    public List<int> grades = new List<int>{ 0, 0, 0 };
     public static GameManager Instance { get; private set; }
     public SceneChanger sceneChanger;
     public InputManager inputManager;

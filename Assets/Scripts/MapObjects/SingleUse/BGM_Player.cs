@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class TempBGMPlayer : MonoBehaviour
@@ -12,33 +13,35 @@ public class TempBGMPlayer : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        _audioSource.clip = bgmClip;
 
         // Ensure standard looping is OFF so our script controls the timing
         _audioSource.loop = false;
         _audioSource.playOnAwake = false;
+    }
 
-        if (bgmClip != null)
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Stage1")
         {
-            StartCoroutine(PlayBGMWithDelay());
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.Play();
+            }
         }
         else
         {
-            Debug.LogWarning("BGM Player: No clip assigned!");
-        }
-    }
-
-    IEnumerator PlayBGMWithDelay()
-    {
-        while (true)
-        {
-            _audioSource.clip = bgmClip;
-            _audioSource.Play();
-
-            // Wait until the song reaches the end
-            yield return new WaitWhile(() => _audioSource.isPlaying);
-
-            // The specific 3-second gap you requested
-            yield return new WaitForSeconds(delayBetweenLoops);
+            _audioSource.Stop();
         }
     }
 }

@@ -1076,9 +1076,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 544607504}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: GoToTitle
+      - m_Target: {fileID: 1089164904}
+        m_TargetAssemblyTypeName: LevelSelectCanvas, Assembly-CSharp
+        m_MethodName: Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1801,6 +1801,8 @@ GameObject:
   - component: {fileID: 1089164902}
   - component: {fileID: 1089164901}
   - component: {fileID: 1089164900}
+  - component: {fileID: 1089164904}
+  - component: {fileID: 1089164905}
   m_Layer: 5
   m_Name: LevelSelectCanvas
   m_TagString: Untagged
@@ -1902,6 +1904,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1089164904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089164899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4f026a20ebc7b45a784ec00e916595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelSelectCanvas
+--- !u!114 &1089164905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089164899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1ca04d21600e24c985dd9b82eb415b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelSelect
+  stageButtons:
+  - {fileID: 1881390726}
+  - {fileID: 1440949379}
+  - {fileID: 1669880839}
+  - {fileID: 531043910}
+  lockImages:
+  - {fileID: 0}
+  - {fileID: 1002863515}
+  - {fileID: 1379074654}
+  - {fileID: 1957069050}
 --- !u!1 &1262747471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1912,7 +1948,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1262747473}
   - component: {fileID: 1262747472}
-  - component: {fileID: 1262747474}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1932,6 +1967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51d44ecfa39c384e88133fabd37d5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  levelReached: 2
   grades: 0100000001000000
   sceneChanger: {fileID: 544607504}
   inputManager: {fileID: 640545069}
@@ -1953,28 +1989,6 @@ Transform:
   - {fileID: 640545070}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1262747474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262747471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc1ca04d21600e24c985dd9b82eb415b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StageSelectManager
-  stageButtons:
-  - {fileID: 1881390726}
-  - {fileID: 1440949379}
-  - {fileID: 1669880839}
-  - {fileID: 531043910}
-  lockImages:
-  - {fileID: 0}
-  - {fileID: 1002863515}
-  - {fileID: 1379074654}
-  - {fileID: 1957069050}
 --- !u!1 &1357204928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,14 +2428,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 544607504}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: LoadStage
-        m_Mode: 5
+      - m_Target: {fileID: 1089164904}
+        m_TargetAssemblyTypeName: LevelSelectCanvas, Assembly-CSharp
+        m_MethodName: GoToNthLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: Stage1
           m_BoolArgument: 0
@@ -2965,14 +2979,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 544607504}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: LoadStage
-        m_Mode: 5
+      - m_Target: {fileID: 1089164904}
+        m_TargetAssemblyTypeName: LevelSelectCanvas, Assembly-CSharp
+        m_MethodName: GoToNthLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: Stage1
           m_BoolArgument: 0

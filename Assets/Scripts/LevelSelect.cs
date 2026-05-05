@@ -2,9 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
-{
-    [SerializeField] private static int levelReached = 1;
-
+{ 
     [SerializeField] private Button[] stageButtons;
     [SerializeField] private GameObject[] lockImages;
 
@@ -12,7 +10,7 @@ public class LevelSelect : MonoBehaviour
     {
         for (int i = 0; i < stageButtons.Length; i++)
         {
-            if (i + 1 > levelReached)
+            if (i + 1 > GameManager.Instance.levelReached)
             {
                 stageButtons[i].interactable = false;
                 if (lockImages.Length > i && lockImages[i] != null)

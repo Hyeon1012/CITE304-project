@@ -42,7 +42,7 @@ public class Introduction : MonoBehaviour
         }
         else
         {
-           SceneManager.LoadScene("LevelSelect");
+            GameManager.Instance.sceneChanger.GoToLevelSelect();
         }
     }
 

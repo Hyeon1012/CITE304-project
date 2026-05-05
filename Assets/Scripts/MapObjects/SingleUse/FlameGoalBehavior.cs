@@ -17,6 +17,7 @@ public class FlameGoalBehavior : MonoBehaviour
 
         else
         {
+            GameManager.Instance.levelReached = GameManager.Instance.levelReached < 2 ? 2 : GameManager.Instance.levelReached;
             GameManager.Instance.sceneChanger.GoToLevelSelect();
             Debug.Log("Level Select called");
         }
