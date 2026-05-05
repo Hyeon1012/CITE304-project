@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class BookCount : MonoBehaviour
     public const int bookMax = 3;
 
     [SerializeField] private GameObject _door;
+    [SerializeField] private GameObject _bookCollectedUI;
+    [SerializeField] private float waitTime = 3f;
 
     private TextMeshPro _text;
     
@@ -21,6 +24,15 @@ public class BookCount : MonoBehaviour
     {
         bookCount++;
         updateText();
+        StartCoroutine(PopUp());
+    }
+
+    IEnumerator PopUp()
+    {
+        _bookCollectedUI.SetActive(true);
+        _bookCollectedUI.GetComponent<BookCollectedUI>().Init(bookMax, bookCount);
+        yield return new WaitForSeconds(waitTime);
+        _bookCollectedUI.SetActive(false);
     }
 
     public void updateText()
