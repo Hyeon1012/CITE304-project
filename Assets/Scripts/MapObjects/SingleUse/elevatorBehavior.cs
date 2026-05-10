@@ -1,10 +1,14 @@
 using UnityEngine;
+using System.Collections;
 
 public class ElevatorTrap : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject interactionPrompt; // The child object with the text
+    [SerializeField] private GameObject interactionPrompt;
     [SerializeField] private float descendSpeed = 2.0f;
+
+    [Header("Trap Settings")]
+    [SerializeField] private float timeUntilDeath = 3.0f;
 
     private GameObject playerObject;
     private bool isPlayerInRange = false;
@@ -12,14 +16,12 @@ public class ElevatorTrap : MonoBehaviour
 
     void Start()
     {
-        // Ensure the prompt is hidden at the start
         if (interactionPrompt != null)
             interactionPrompt.SetActive(false);
     }
 
     void Update()
     {
-        // Only allow interaction if the player is there and we haven't started descending
         if (isPlayerInRange && !isDescending)
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -28,7 +30,6 @@ public class ElevatorTrap : MonoBehaviour
             }
         }
 
-        // If the trap is sprung, move the elevator down
         if (isDescending)
         {
             transform.Translate(Vector3.down * descendSpeed * Time.deltaTime);
@@ -39,13 +40,44 @@ public class ElevatorTrap : MonoBehaviour
     {
         isDescending = true;
 
-        // Hide the prompt and the player
         if (interactionPrompt != null) interactionPrompt.SetActive(false);
 
         if (playerObject != null)
         {
+            // Note: If KillPlayer() needs to play animations or sounds on the player, 
+            // you might want to remove this SetActive(false) and let KillPlayer() handle hiding the player instead!
             playerObject.SetActive(false);
             Debug.Log("ElevatorTrap: Player trapped. Descending...");
+        }
+
+        // Pass the trapped player into the coroutine
+        StartCoroutine(TriggerDeathSequence(playerObject));
+    }
+
+    private IEnumerator TriggerDeathSequence(GameObject trappedPlayer)
+    {
+        yield return new WaitForSeconds(timeUntilDeath);
+
+        Debug.Log("ElevatorTrap: 3 seconds have passed! Executing HandlePlayerDeath...");
+
+        // Call your custom death function
+        if (trappedPlayer != null)
+        {
+            HandlePlayerDeath(trappedPlayer);
+        }
+    }
+
+    // Your custom player killing function
+    private void HandlePlayerDeath(GameObject playerObj)
+    {
+        PlayerStateManager player = playerObj.GetComponent<PlayerStateManager>();
+        if (player != null)
+        {
+            player.KillPlayer();
+        }
+        else
+        {
+            Debug.LogWarning("ElevatorTrap: Could not find PlayerStateManager on the trapped object!");
         }
     }
 
@@ -70,7 +102,6 @@ public class ElevatorTrap : MonoBehaviour
             if (interactionPrompt != null)
                 interactionPrompt.SetActive(false);
 
-            // Clean up reference only if we aren't currently using it
             playerObject = null;
         }
     }
