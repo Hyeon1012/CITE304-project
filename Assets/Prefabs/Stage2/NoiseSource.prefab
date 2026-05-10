@@ -142,3 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NoiseSource
   noiseAmount: 10
+  noiseClip: {fileID: 0}
+  tempSound: {fileID: 2153090552961824441, guid: 97170760522778d4980aeabddd4abde6, type: 3}
