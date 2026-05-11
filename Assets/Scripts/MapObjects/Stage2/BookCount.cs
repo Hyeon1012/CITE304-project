@@ -23,8 +23,8 @@ public class BookCount : MonoBehaviour
     public void bookObtained()
     {
         bookCount++;
-        updateText();
         StartCoroutine(PopUp());
+        updateText();
     }
 
     IEnumerator PopUp()
@@ -33,16 +33,15 @@ public class BookCount : MonoBehaviour
         _bookCollectedUI.GetComponent<BookCollectedUI>().Init(bookMax, bookCount);
         yield return new WaitForSeconds(waitTime);
         _bookCollectedUI.SetActive(false);
-    }
-
-    public void updateText()
-    {
-        _text.text = bookCount + " / " + bookMax;
-
         if (bookCount == bookMax)
         {
             _door.SetActive(false);
             gameObject.SetActive(false);
         }
+    }
+
+    public void updateText()
+    {
+        _text.text = bookCount + " / " + bookMax;
     }
 }

@@ -42,6 +42,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-4550280827186048867
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ChaseFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 1259bee1bb99a8d49af58687a6f8036b
+  m_Children: []
+  m_Volume: 2ef20cfdadc514f4182247f0c6013964
+  m_Pitch: 29e74c5e4a1cb6e478d9b810d9b2fece
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 1166511342802719189}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-1965407586220099044
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -126,6 +145,7 @@ AudioMixerController:
     - 6259a5eb17f52ce4693f56ba2404ceb6
     - 378165dd9024b404d998221cc38fe5b9
     - a3481df276201054185fdca2f52cb0f3
+    - 1259bee1bb99a8d49af58687a6f8036b
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -182,6 +202,20 @@ AudioMixerSnapshotController:
     b5fb5e669c90fac4db3226b78fca5547: 22
     82e2fd8e68b729a4581bedf6479c1810: 0.1
   m_TransitionOverrides: {}
+--- !u!244 &1166511342802719189
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 73472686cbbe92b4ea857efdad44fe70
+  m_EffectName: Attenuation
+  m_MixLevel: b48e17038fb2cde44bbca1f5b4d13922
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &2374372457854455091
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -226,6 +260,7 @@ AudioMixerGroupController:
   m_GroupID: e45f2c47f6090f64dbf9dd77e645d672
   m_Children:
   - {fileID: 8907126776308045355}
+  - {fileID: -4550280827186048867}
   m_Volume: 502b863e3a4ff3a4bbbb68c556c91446
   m_Pitch: 5994a3f12cc03ba468a7f14bbe7afb8b
   m_Send: 00000000000000000000000000000000
