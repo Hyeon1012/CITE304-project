@@ -33,6 +33,11 @@ public class SceneChanger : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
+    public void GoToIntroduction()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void Init()
     {   
         curScene = SceneManager.GetActiveScene().buildIndex;

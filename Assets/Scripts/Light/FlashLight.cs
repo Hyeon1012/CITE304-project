@@ -8,6 +8,8 @@ public class FlashLight : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.IsPaused) return;
+
         _mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         _direction = _mousePosition - transform.position;
 

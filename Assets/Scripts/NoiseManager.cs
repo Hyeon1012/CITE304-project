@@ -11,6 +11,9 @@ public class NoiseManager : MonoBehaviour
     [SerializeField] private float _currentNoise = 0f;
     [SerializeField] private float _noiseDecayScala = 5f;
     [SerializeField] private float _noiseDecayRatio = 0.8f;
+    [SerializeField] private float _chaserPeriod = 1.0f;
+
+    private float timer = 0f;
 
     [Header("Events")]
     public UnityEvent OnNoiseThresholdReached;
@@ -29,6 +32,7 @@ public class NoiseManager : MonoBehaviour
             else _currentNoise -= _noiseDecayScala * Time.deltaTime;
             _currentNoise = Mathf.Clamp(_currentNoise, 0, maxNoise);
         }
+        timer -= Time.deltaTime;
     }
 
     public float GetCurrentNoise()
@@ -43,7 +47,11 @@ public class NoiseManager : MonoBehaviour
 
         if (_currentNoise >= thresholdNoise)
         {
-            OnNoiseThresholdReached?.Invoke();
+            if (timer <= 0f)
+            {
+                OnNoiseThresholdReached?.Invoke();
+                timer = _chaserPeriod;
+            }
         }
     }
 }

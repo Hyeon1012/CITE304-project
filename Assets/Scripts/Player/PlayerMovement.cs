@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float _moveInput = 0f;
 
     private float _fallDistance = 0f;
+    private bool _shift = false;
 
     public event Action OnPlayerJumped;
     public event Action OnPlayerWalking;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerStateManager _stateManager;
     private PlayerNoiseMaker _noiseMaker;
+    private PlayerSound _sound;
     private float _currentSpeed;
 
     void Awake()
@@ -38,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         _stateManager = gameObject.GetComponent<PlayerStateManager>();
         
         _noiseMaker = gameObject.GetComponent<PlayerNoiseMaker>();
+        _sound = gameObject.GetComponent<PlayerSound>();
 
         direction = 1;
         _currentSpeed = _speed;
@@ -54,8 +57,15 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveInput = moveInput;
         if (_moveInput != 0 && _moveInput != direction) direction = _moveInput;
-        if (_moveInput == 0) OnPlayerStopWalking?.Invoke();
-        else OnPlayerWalking?.Invoke();
+        if (_moveInput == 0)
+        {
+            OnPlayerStopWalking?.Invoke();
+            _sound?.StopMovingSound();
+        }
+        else
+        {
+            OnPlayerWalking?.Invoke();
+        }
     }
 
     private void OnJumpInput()
@@ -64,7 +74,16 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_noiseMaker != null)
             {
-                _noiseMaker.MakeJumpNoise(_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey, _shiftRate);
+                _noiseMaker?.MakeJumpNoise(_shift, _shiftRate);
+            }
+
+            if(_shift)
+            {
+                _sound?.WeakJumpSound();
+            }
+            else
+            {
+                _sound?.JumpSound();
             }
 
             OnPlayerJumped?.Invoke();
@@ -93,9 +112,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.IsPaused) return;
+
         if (_moveInput == 0) OnPlayerStopWalking?.Invoke();
 
-        float shiftMultiplier = (_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey) ? shiftMultiplier = _shiftRate : 1f;
+        _shift = _shiftTurnOn && GameManager.Instance.inputManager.ShiftKey;
+        float shiftMultiplier = _shift ? shiftMultiplier = _shiftRate : 1f;
 
         // --- ACCELERATOR LOGIC ---
         if (_stateManager != null && _stateManager.HasItem(ItemType.Accelerator))
@@ -119,7 +141,16 @@ public class PlayerMovement : MonoBehaviour
         {
             if (_noiseMaker != null)
             {
-                _noiseMaker.MakeWalkNoise(_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey, _shiftRate);
+                _noiseMaker.MakeWalkNoise(_shift, _shiftRate);
+            }
+
+            if (_groundChecker.isGrounded)
+            {
+                _sound?.PlayMovingSound(_shift);
+            }
+            else
+            {
+                _sound?.StopMovingSound();
             }
         }
     }
@@ -142,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
             if (_noiseMaker != null && _fallDistance >= 0.1f)
             {
                 _noiseMaker.MakeLandingNoise(_fallDistance);
+                _sound?.FallSound();
             }
             _fallDistance = 0;
             _rb.gravityScale = _gravityScale;
