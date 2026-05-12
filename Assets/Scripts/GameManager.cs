@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        player?.GetComponent<PlayerSound>()?.Pause();
         levelCanvas.pauseMenu.SetActive(true);
         IsPaused = true;
     }
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        player?.GetComponent<PlayerSound>()?.Resume();
         levelCanvas.pauseMenu.SetActive(false);
         IsPaused = false;
     }

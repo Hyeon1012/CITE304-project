@@ -5275,7 +5275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7983277424378842707, guid: ced40cb3381a11248b4a64bf1d0a8d4f, type: 3}
       propertyPath: _chaserPeriod
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7983277424378842707, guid: ced40cb3381a11248b4a64bf1d0a8d4f, type: 3}
       propertyPath: OnNoiseThresholdReached.m_PersistentCalls.m_Calls.Array.size

@@ -112,6 +112,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.IsPaused) return;
+
         if (_moveInput == 0) OnPlayerStopWalking?.Invoke();
 
         _shift = _shiftTurnOn && GameManager.Instance.inputManager.ShiftKey;

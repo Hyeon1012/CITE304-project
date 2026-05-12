@@ -13,7 +13,6 @@ public class NoiseManager : MonoBehaviour
     [SerializeField] private float _noiseDecayRatio = 0.8f;
     [SerializeField] private float _chaserPeriod = 1.0f;
 
-    private bool _chaserTriggered = false;
     private float timer = 0f;
 
     [Header("Events")]
@@ -48,16 +47,11 @@ public class NoiseManager : MonoBehaviour
 
         if (_currentNoise >= thresholdNoise)
         {
-            if (!_chaserTriggered && timer <= 0f)
+            if (timer <= 0f)
             {
-                _chaserTriggered = true;
                 OnNoiseThresholdReached?.Invoke();
                 timer = _chaserPeriod;
             }
-        }
-        else
-        {
-            _chaserTriggered = false;
         }
     }
 }
