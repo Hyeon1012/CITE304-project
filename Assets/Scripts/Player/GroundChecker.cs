@@ -4,6 +4,7 @@ public class GroundChecker : MonoBehaviour
 {
     [SerializeField] private Vector2 _boxSize = new Vector2(0.815f, 0.1f);
     [SerializeField] private LayerMask _groundLayer;
+    [SerializeField] private float _invertedYOffset = 1.0f;
 
     private PlayerMovement _playerMovement;
 
@@ -17,7 +18,13 @@ public class GroundChecker : MonoBehaviour
 
     void FixedUpdate()
     {
-        Collider2D collide = Physics2D.OverlapBox(transform.position, _boxSize, 0f, _groundLayer);
+        Vector2 checkPosition = transform.position;
+        if (_playerMovement != null && _playerMovement.gravityMultiplier < 0)
+        {
+            checkPosition.y += _invertedYOffset;
+        }
+
+        Collider2D collide = Physics2D.OverlapBox(checkPosition, _boxSize, 0f, _groundLayer);
         
         if (collide != null)
         {

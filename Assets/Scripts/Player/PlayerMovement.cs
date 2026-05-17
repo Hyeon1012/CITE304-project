@@ -30,6 +30,21 @@ public class PlayerMovement : MonoBehaviour
     private PlayerNoiseMaker _noiseMaker;
     private PlayerSound _sound;
     private float _currentSpeed;
+    private float _gravityMultiplier = 1f;
+
+    public float gravityMultiplier
+    {
+        get { return _gravityMultiplier; }
+        set
+        {
+            if (_gravityMultiplier != value)
+            {
+                _gravityMultiplier = value;
+                float targetAngle = _gravityMultiplier < 0 ? 180f : 0f;
+                StartCoroutine(SmoothRotate(targetAngle, 0.5f));
+            }
+        }
+    }
 
     void Awake()
     {
@@ -90,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
             float jumpMultiplier = _stateManager != null ? _stateManager.GetJumpMultiplier() : 1f;
             float shiftMultiplier = (_shiftTurnOn && GameManager.Instance.inputManager.ShiftKey) ? shiftMultiplier = Mathf.Sqrt(_shiftRate) : 1f;
-            _rb.AddForce(Vector2.up * _jumpPower * jumpMultiplier * shiftMultiplier, ForceMode2D.Impulse);
+            _rb.AddForce(Vector2.up * gravityMultiplier * _jumpPower * jumpMultiplier * shiftMultiplier, ForceMode2D.Impulse);
         }
     }
 
@@ -159,14 +174,23 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.linearVelocity = new Vector2(_moveInput * _currentSpeed, _rb.linearVelocityY)
                              + _groundChecker.GetGroundVelocity();
+        bool isInverted = gravityMultiplier < 0;
 
-        if (_moveInput < 0) _sr.flipX = true;
-        else if (_moveInput > 0) _sr.flipX = false;
-
-        if (_rb.linearVelocityY < 0)
+        if (isInverted)
         {
-            _fallDistance -= _rb.linearVelocityY * 0.02f;
-            _rb.gravityScale = _fallGravityScale;
+            if (_moveInput < 0) _sr.flipX = false;
+            else if (_moveInput > 0) _sr.flipX = true;
+        }
+        else
+        {
+            if (_moveInput < 0) _sr.flipX = true;
+            else if (_moveInput > 0) _sr.flipX = false;
+        }
+
+        if (_rb.linearVelocityY * gravityMultiplier < 0)
+        {
+            _fallDistance -= (_rb.linearVelocityY * gravityMultiplier) * 0.02f;
+            _rb.gravityScale = _fallGravityScale * gravityMultiplier;
         }
         else
         {
@@ -176,8 +200,22 @@ public class PlayerMovement : MonoBehaviour
                 _sound?.FallSound();
             }
             _fallDistance = 0;
-            _rb.gravityScale = _gravityScale;
+            _rb.gravityScale = _gravityScale * gravityMultiplier;
         }
+    }
+
+    private IEnumerator SmoothRotate(float targetZ, float duration)
+    {
+        float startZ = transform.rotation.eulerAngles.z;
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float z = Mathf.LerpAngle(startZ, targetZ, time / duration);
+            transform.rotation = Quaternion.Euler(0, 0, z);
+            yield return null;
+        }
+        transform.rotation = Quaternion.Euler(0, 0, targetZ);
     }
 
     void OnDestroy()
