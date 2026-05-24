@@ -25,6 +25,9 @@ public class Canon : MonoBehaviour
     {
         if (_playerTransform == null) return;
         if (_renderer != null && !_renderer.isVisible) return;
+        Vector2 aimDirection = (_playerTransform.position - transform.position).normalized;
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
         _timer += Time.deltaTime;
         if (_timer >= _fireCooldown)
         {
