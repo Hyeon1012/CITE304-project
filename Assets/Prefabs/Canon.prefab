@@ -106,5 +106,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Canon
   _cannonballPrefab: {fileID: 3731087263581817282, guid: 11036da2408927942bb104e8a8ff7b06, type: 3}
   _firePoint: {fileID: 0}
-  _fireCooldown: 2
+  _fireCooldown: 1
   _projectileSpeed: 10

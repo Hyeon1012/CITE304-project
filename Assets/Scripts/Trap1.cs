@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TrapManager : MonoBehaviour
+public class Trap1 : MonoBehaviour
 {
     [SerializeField] private GameObject _hiddenCanonsGroup;
     [SerializeField] private GameObject _appearWall; // firebar (5)
