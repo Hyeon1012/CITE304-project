@@ -13,21 +13,24 @@ public class Trap2 : MonoBehaviour
 
     private int _correctCount = 0;
     private bool _isActivated = false;
+    private bool _isCleared = false;
 
     void Start()
     {
         if (_leftFirebar != null) _leftFirebar.gameObject.SetActive(false);
         if (_rightFirebar != null) _rightFirebar.gameObject.SetActive(false);
         if (_coreItem != null) _coreItem.SetActive(false);
+        if (_quizSquare != null) _quizSquare.gameObject.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !_isActivated)
+        if (other.CompareTag("Player") && !_isActivated && !_isCleared)
         {
             _isActivated = true;
             if (_leftFirebar != null) _leftFirebar.gameObject.SetActive(true);
             if (_rightFirebar != null) _rightFirebar.gameObject.SetActive(true);
+            if (_quizSquare != null) _quizSquare.gameObject.SetActive(true);
         }
     }
 
@@ -67,7 +70,7 @@ public class Trap2 : MonoBehaviour
     private void ClearTrap()
     {
         _isActivated = false;
-
+        _isCleared = true;
         if (_leftFirebar != null) _leftFirebar.gameObject.SetActive(false);
         if (_rightFirebar != null) _rightFirebar.gameObject.SetActive(false);
         if (_quizSquare != null) _quizSquare.SetActive(false);
