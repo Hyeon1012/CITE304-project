@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public const int EXIST_MAP_N = 2;
+    public const int EXIST_MAP_N = 3;
     public const int LEVEL_SCENE_OFFSET = 2;
     public int levelReached = 1;
 
-    public List<int> grades = new List<int>{ 0, 0, 0 };
+    public List<int> grades = new List<int>{ 0, 0, 0, 0 };
     public static GameManager Instance { get; private set; }
     public SceneChanger sceneChanger;
     public InputManager inputManager;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void PlayerDie()
     {
         Debug.Log(sceneChanger.curScene - LEVEL_SCENE_OFFSET);
-
+        Debug.Log(sceneChanger.curScene);
         Debug.Log(grades.Count);
         grades[sceneChanger.curScene - LEVEL_SCENE_OFFSET]++;
         levelCanvas.deathPopUp.SetActive(true);
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         {
             IsInputBlocked = false;
         }
-        else if (scene.name == "Title")
+        else if (scene.name == "StartMenu" || scene.name == "Introduction")
         {
             IsInputBlocked = false;
         }

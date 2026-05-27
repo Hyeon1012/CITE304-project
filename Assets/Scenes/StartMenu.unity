@@ -790,8 +790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51d44ecfa39c384e88133fabd37d5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  levelReached: 1
-  grades: 00000000000000000000000000000000
+  levelReached: 3
+  grades: 0000000000000000000000000000000000000000
   sceneChanger: {fileID: 231975444}
   inputManager: {fileID: 133112875}
   levelCanvas: {fileID: 0}

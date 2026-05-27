@@ -41,7 +41,7 @@ public class TempBGMPlayer : MonoBehaviour
         }
         else
         {
-            _audioSource.Stop();
+            _audioSource?.Stop();
         }
     }
 }

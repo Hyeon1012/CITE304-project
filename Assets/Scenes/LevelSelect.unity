@@ -1967,8 +1967,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51d44ecfa39c384e88133fabd37d5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  levelReached: 2
-  grades: 0100000001000000
+  levelReached: 3
+  grades: 00000000000000000000000000000000
   sceneChanger: {fileID: 544607504}
   inputManager: {fileID: 640545069}
   levelCanvas: {fileID: 0}
@@ -2560,16 +2560,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 544607504}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: LoadStage
-        m_Mode: 5
+      - m_Target: {fileID: 1089164904}
+        m_TargetAssemblyTypeName: LevelSelectCanvas, Assembly-CSharp
+        m_MethodName: GoToNthLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: Stage1
+          m_StringArgument: Stage3
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1669880840
