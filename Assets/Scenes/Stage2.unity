@@ -5583,7 +5583,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerNoiseMaker
   JumpNoise: 40
   WalkNoise: 30
-  fallNoiseWeight: 3
+  fallNoiseWeight: 5
+  threshold: 11.5
 --- !u!82 &1087538388
 AudioSource:
   m_ObjectHideFlags: 0

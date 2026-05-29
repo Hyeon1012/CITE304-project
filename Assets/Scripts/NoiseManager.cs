@@ -9,8 +9,8 @@ public class NoiseManager : MonoBehaviour
     public float maxNoise = 100f;
     public float thresholdNoise = 80f;
     [SerializeField] private float _currentNoise = 0f;
-    [SerializeField] private float _noiseDecayScala = 5f;
-    [SerializeField] private float _noiseDecayRatio = 0.8f;
+    [SerializeField] private float _noiseDecayScala = 6f;
+    [SerializeField] private float _noiseDecayRatio = 0.9f;
     [SerializeField] private float _chaserPeriod = 1.0f;
 
     private float timer = 0f;
@@ -28,7 +28,7 @@ public class NoiseManager : MonoBehaviour
     {
         if (_currentNoise > 0)
         {
-            if (_currentNoise > 50f) _currentNoise *= Mathf.Exp(Mathf.Log(_noiseDecayRatio) * Time.deltaTime);
+            if (_currentNoise > 40f) _currentNoise *= Mathf.Exp(Mathf.Log(_noiseDecayRatio) * Time.deltaTime);
             else _currentNoise -= _noiseDecayScala * Time.deltaTime;
             _currentNoise = Mathf.Clamp(_currentNoise, 0, maxNoise);
         }

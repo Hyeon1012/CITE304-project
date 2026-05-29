@@ -87,10 +87,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_groundChecker.isGrounded)
         {
-            if (_noiseMaker != null)
-            {
-                _noiseMaker?.MakeJumpNoise(_shift, _shiftRate);
-            }
 
             if(_shift)
             {
