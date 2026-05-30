@@ -12,7 +12,7 @@ public class FlameGoalBehavior : MonoBehaviour
         //only kill if the player does NOT have WaterBucket
         if (!player.HasItem(ItemType.WaterBucket))
         {
-            player.KillPlayer();
+            player.KillPlayer("flameGoal");
         }
 
         else

@@ -7,13 +7,15 @@ public class PlayerStateManager : MonoBehaviour
 
     public ItemType currentItem = ItemType.None;
 
-    public void KillPlayer()
+    public void KillPlayer(string deathMessage = "")
     {
         if (currentState == PlayerState.Dead) return;
 
         currentState = PlayerState.Dead;
         Debug.Log("Player has died!");
-        GameManager.Instance.PlayerDie();
+
+        // Passes the string to PlayerDie (it will pass "" if nothing was inputted)
+        GameManager.Instance.PlayerDie(deathMessage);
 
         Destroy(gameObject);
     }

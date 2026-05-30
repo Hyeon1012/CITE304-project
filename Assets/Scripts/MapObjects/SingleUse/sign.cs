@@ -6,22 +6,24 @@ public class SignPopup2D : MonoBehaviour
     [Tooltip("How far offset from the player's center the popup should be.")]
     [SerializeField] private Vector3 popupOffset = new Vector3(0, 0, 0);
 
-    private GameObject[] popups = new GameObject[6];
+    // Updated array size from 6 to 8
+    private GameObject[] popups = new GameObject[8];
     private int currentIndex = -1;
 
-    // Replaced playerIsInside with a state tracker for the sequence
     private bool isSequenceActive = false;
     private Transform playerTransform;
 
     void Start()
     {
-        if (transform.childCount < 6)
+        // Updated check for 8 children
+        if (transform.childCount < 8)
         {
-            Debug.LogError("SignPopup2D needs 6 children! You only have " + transform.childCount);
+            Debug.LogError("SignPopup2D needs 8 children! You only have " + transform.childCount);
             return;
         }
 
-        for (int i = 0; i < 6; i++)
+        // Updated loop to 8
+        for (int i = 0; i < 8; i++)
         {
             popups[i] = transform.GetChild(i).gameObject;
             popups[i].SetActive(false);
@@ -51,16 +53,16 @@ public class SignPopup2D : MonoBehaviour
                 ShowPopup(4); // Jump to Child 5 (Index 4)
             }
         }
-        // Logic for screens 4 and 5 (Indices 3 and 4)
-        else if (currentIndex == 3 || currentIndex == 4)
+        // Logic for screens 4, 5, 6, and 7 (Indices 3, 4, 5, and 6)
+        else if (currentIndex >= 3 && currentIndex <= 6)
         {
             if (AnyKeyExceptWASD())
             {
                 ShowPopup(currentIndex + 1); // Go to the next screen
             }
         }
-        // Logic for screen 6 (Index 5) - Dismiss the final screen
-        else if (currentIndex == 5)
+        // Logic for screen 8 (Index 7) - Dismiss the final screen
+        else if (currentIndex == 7)
         {
             if (AnyKeyExceptWASD())
             {
@@ -80,7 +82,6 @@ public class SignPopup2D : MonoBehaviour
         popups[currentIndex].SetActive(true);
     }
 
-    // New method to handle cleaning up once the player closes the final screen
     private void EndSequence()
     {
         if (currentIndex >= 0 && currentIndex < popups.Length)
@@ -123,6 +124,4 @@ public class SignPopup2D : MonoBehaviour
             ShowPopup(0);
         }
     }
-
-    // Notice that OnTriggerExit2D has been completely removed!
 }
