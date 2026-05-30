@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public const int EXIST_MAP_N = 2;
     public const int LEVEL_SCENE_OFFSET = 2;
     public int levelReached = 1;
+    public string lastDeathCause = "";
 
     public List<int> grades = new List<int>{ 0, 0, 0 };
     public static GameManager Instance { get; private set; }
@@ -57,6 +58,29 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(grades.Count);
         grades[sceneChanger.curScene - LEVEL_SCENE_OFFSET]++;
+        levelCanvas.deathPopUp.SetActive(true);
+    }
+    public void PlayerDie(string deathMessage = "")
+    {
+        // 1. Store the cause so the UI can read it when it turns on
+        lastDeathCause = deathMessage;
+
+        // 2. You can still handle background logic here if you want
+        if (deathMessage == "placeholder1")
+        {
+            Debug.Log("Hit placeholder 1 condition.");
+        }
+        else if (deathMessage == "placeholder2")
+        {
+            Debug.Log("Hit placeholder 2 condition.");
+        }
+
+        // --- Default function persists regardless of the above ---
+        Debug.Log(sceneChanger.curScene - LEVEL_SCENE_OFFSET);
+        Debug.Log(grades.Count);
+        grades[sceneChanger.curScene - LEVEL_SCENE_OFFSET]++;
+
+        // This triggers OnEnable() inside DeathPopUp
         levelCanvas.deathPopUp.SetActive(true);
     }
 

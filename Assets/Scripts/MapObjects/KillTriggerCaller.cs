@@ -10,6 +10,10 @@ public class Hazard : MonoBehaviour
     [SerializeField] private bool returnToStart = false;
     [SerializeField] private float returnDelay = 0f;
 
+    [Header("Death Settings")]
+    [Tooltip("Optional custom death message. Leave blank for default.")]
+    [SerializeField] private string deathCause = "";
+
     private Vector3 startPos;
     private Vector3 targetPos;
 
@@ -77,8 +81,8 @@ public class Hazard : MonoBehaviour
 
         if (player != null)
         {
-            player.KillPlayer();
-
+            // Pass the custom string into your KillPlayer method
+            player.KillPlayer(deathCause);
         }
     }
 }
