@@ -10,6 +10,7 @@ public class Trap2 : MonoBehaviour
     [SerializeField] private float _closeSpeed = 2f;
     [SerializeField] private float _pushBackDistance = 3f;
     [SerializeField] private int _totalQuizzes = 3;
+    [SerializeField] private GameObject _introText;
 
     private int _correctCount = 0;
     private bool _isActivated = false;
@@ -31,6 +32,7 @@ public class Trap2 : MonoBehaviour
             if (_leftFirebar != null) _leftFirebar.gameObject.SetActive(true);
             if (_rightFirebar != null) _rightFirebar.gameObject.SetActive(true);
             if (_quizSquare != null) _quizSquare.gameObject.SetActive(true);
+            if (_introText != null) _introText.SetActive(false);
         }
     }
 

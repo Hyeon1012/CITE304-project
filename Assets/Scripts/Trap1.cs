@@ -7,6 +7,7 @@ public class Trap1 : MonoBehaviour
     [SerializeField] private GameObject _appearWall; // firebar (5)
     [SerializeField] private GameObject _blockingWall; // firebar (6)
     [SerializeField] private float _survivalTime = 10f;
+    [SerializeField] private GameObject _introText;
     private bool _isActivated = false;
 
     void Start()
@@ -22,6 +23,7 @@ public class Trap1 : MonoBehaviour
             _isActivated = true;
             if (_hiddenCanonsGroup != null) _hiddenCanonsGroup.SetActive(true);
             if(_appearWall != null) _appearWall.SetActive(true);
+            if (_introText != null) _introText.SetActive(false);
             StartCoroutine(SurvivalTimer());
         }
     }

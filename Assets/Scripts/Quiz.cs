@@ -7,6 +7,7 @@ public class Quiz : MonoBehaviour
     [SerializeField] private Trap2 _trapManager;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private GameObject _captcha;
+    [SerializeField] private GameObject _captchaIntroObject;
 
     private int _currentIndex = 0;
 
@@ -75,7 +76,7 @@ public class Quiz : MonoBehaviour
 
             if (_captcha != null)
             {
-                _captcha.SetActive(true);
+                _captchaIntroObject.SetActive(true);
             }
         }
     }
