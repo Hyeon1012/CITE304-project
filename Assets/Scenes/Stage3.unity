@@ -10338,12 +10338,32 @@ PrefabInstance:
       value: LevelCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 3039825065081019072, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1448
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039825065081019072, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 217
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039825065081019072, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039825065081019072, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039825065081019072, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3039825065081019072, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 3039825065081019072, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5565555908340284769, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
       propertyPath: m_Sprite
@@ -10436,6 +10456,30 @@ PrefabInstance:
     - target: {fileID: 7739199785795301345, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192422444474529315, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 839
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192422444474529315, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192422444474529315, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192422444474529315, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192422444474529315, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9192422444474529315, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
