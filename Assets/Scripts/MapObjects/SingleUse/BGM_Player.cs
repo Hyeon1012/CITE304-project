@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 public class TempBGMPlayer : MonoBehaviour
 {
-    [SerializeField] private AudioClip bgmClip;
+    [SerializeField] private AudioClip[] bgmClips;
     [SerializeField] private float delayBetweenLoops = 3f;
 
     private AudioSource _audioSource;
@@ -13,11 +13,8 @@ public class TempBGMPlayer : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.clip = bgmClip;
-
-        // Ensure standard looping is OFF so our script controls the timing
-        _audioSource.loop = false;
         _audioSource.playOnAwake = false;
+        _audioSource.clip = bgmClips[0];
     }
 
     private void OnEnable()
@@ -36,6 +33,15 @@ public class TempBGMPlayer : MonoBehaviour
         {
             if (!_audioSource.isPlaying)
             {
+                _audioSource.clip = bgmClips[0];
+                _audioSource.Play();
+            }
+        }
+        else if (scene.name == "Stage3")
+        {
+            if (!_audioSource.isPlaying)
+            {
+                _audioSource.clip = bgmClips[1];
                 _audioSource.Play();
             }
         }
