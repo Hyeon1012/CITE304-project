@@ -2114,7 +2114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4507146844360440850, guid: 4baebc7ae92367b41ab9dae75c4ac3fb, type: 3}
+  m_Sprite: {fileID: 1983575971, guid: c17f493f3d81fef4d85dd2d9b746af07, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7611,7 +7611,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1459515662764706542, guid: 4b8dbd2c3825f724189944de55dd4896, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92ae271c45c0af540b5d1fbdfed56291, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7664,6 +7664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   levelReached: 1
+  lastDeathCause: 
   grades: 010000000100000001000000
   sceneChanger: {fileID: 622983772}
   inputManager: {fileID: 1463822582}
@@ -8065,6 +8066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathPopUp
   gradeText: {fileID: 913323816}
+  customDeathMessageText: {fileID: 0}
   grade:
   - NotGraded
   - A+

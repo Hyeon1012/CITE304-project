@@ -1652,6 +1652,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &148404191
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2433,6 +2434,7 @@ MonoBehaviour:
   riseSpeed: 150
   returnToStart: 0
   returnDelay: 1.5
+  deathCause: 
 --- !u!60 &250457095
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2927,6 +2929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathPopUp
   gradeText: {fileID: 68612489}
+  customDeathMessageText: {fileID: 0}
   grade:
   - NotGraded
   - A+
@@ -5431,6 +5434,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &548890441
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7478,6 +7482,7 @@ MonoBehaviour:
   riseSpeed: 7
   returnToStart: 1
   returnDelay: 1.5
+  deathCause: 
 --- !u!60 &696234793
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7729,6 +7734,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &703276742
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8214,6 +8220,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &743084209
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9035,6 +9042,7 @@ MonoBehaviour:
   riseSpeed: 150
   returnToStart: 0
   returnDelay: 1.5
+  deathCause: 
 --- !u!60 &809892320
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9673,7 +9681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1459515662764706542, guid: 4b8dbd2c3825f724189944de55dd4896, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92ae271c45c0af540b5d1fbdfed56291, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10794,6 +10802,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &1070628413
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -12288,6 +12297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   levelReached: 1
+  lastDeathCause: 
   grades: 010000000100000001000000
   sceneChanger: {fileID: 1394403958}
   inputManager: {fileID: 2146453323}
@@ -14750,6 +14760,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &1550455653
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -15297,6 +15308,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &1627981434
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -16455,7 +16467,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4507146844360440850, guid: 4baebc7ae92367b41ab9dae75c4ac3fb, type: 3}
+  m_Sprite: {fileID: 1983575971, guid: c17f493f3d81fef4d85dd2d9b746af07, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16797,6 +16809,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &1743224092
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -17198,6 +17211,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &1798732597
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -18567,6 +18581,7 @@ MonoBehaviour:
   riseSpeed: 5
   returnToStart: 0
   returnDelay: 0
+  deathCause: 
 --- !u!60 &1956835181
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -8845,6 +8845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   levelReached: 1
+  lastDeathCause: 
   grades: 00000000000000000000000000000000
   sceneChanger: {fileID: 622983772}
   inputManager: {fileID: 1463822582}
@@ -10347,7 +10348,11 @@ PrefabInstance:
     - target: {fileID: 5565555908340284769, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 4507146844360440850, guid: 4baebc7ae92367b41ab9dae75c4ac3fb, type: 3}
+      objectReference: {fileID: 1983575971, guid: c17f493f3d81fef4d85dd2d9b746af07, type: 3}
+    - target: {fileID: 6583059059291084403, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92ae271c45c0af540b5d1fbdfed56291, type: 3}
     - target: {fileID: 7458326650503501019, guid: f0a03ce3e38d84e4c9bc9f7274d82bc4, type: 3}
       propertyPath: m_Pivot.x
       value: 0

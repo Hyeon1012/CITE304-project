@@ -751,7 +751,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9106975920222036739, guid: 60f3a7a807ae8904f97ffc9ca8241206, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d5b562c7065cde4fbd5a7a68fbff69d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -791,6 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   levelReached: 3
+  lastDeathCause: 
   grades: 0000000000000000000000000000000000000000
   sceneChanger: {fileID: 231975444}
   inputManager: {fileID: 133112875}
@@ -929,7 +930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6403102393959202891, guid: 1cf57c2a15882da45a9899926f1a9420, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9bdb3a7639cd9ac44b000530e06617e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1062,7 +1063,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6854129289374694349, guid: 79b036be082ea3a4998cc74d7a71aea4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9747fbfcfe9930d4fbc54cda34dea60a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1351,7 +1352,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5714185018441334095, guid: a317cb79207651749af901b233c89257, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7056188387f3bf4599f8fdeca67aa7a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
